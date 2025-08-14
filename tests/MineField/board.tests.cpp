@@ -5,8 +5,7 @@
 
 namespace board::tests
 {
-
-	TEST(Game, should_return_true_if_board_is_set_correctly)
+	TEST(Board, should_return_true_if_board_is_set_correctly)
 	{
         Game game;
         unsigned int rows = 10;
@@ -17,7 +16,7 @@ namespace board::tests
 
     }
 
-    TEST(Game, should_return_nullptr_when_accesing_coordinate_if_board_is_not_initialized)
+    TEST(Board, should_return_nullptr_when_accesing_coordinate_if_board_is_not_initialized)
     {
         Game game;
         Board board;
