@@ -13,6 +13,7 @@ Game::Game()
     , mResult(GameResult::InProgress) 
     , mPlayerInitFunc(nullptr)
     , mIsGameActive(true)
+    , gameContext(mBoard, mPlayers, mPlayerInitFunc)
 {
 }
 
@@ -133,4 +134,9 @@ void Game::markGameAsOver()
 bool Game::isGameActive() const
 {
     return mIsGameActive;
+}
+
+GameContext& Game::getGameContext()
+{
+    return gameContext;
 }
