@@ -8,6 +8,7 @@
 #include <iostream>
 #include <functional>
 #include <memory>
+#include <MineField/GameContext.h>
 
 enum class GameResult 
 { 
@@ -41,7 +42,7 @@ public:
     void nextStep();
     void markGameAsOver();
     bool isGameActive() const;
-private:
+    GameContext& getGameContext();
     Board mBoard;
     int mMineCount;
     std::vector<std::unique_ptr<Player>> mPlayers;
@@ -49,4 +50,5 @@ private:
     GameResult mResult = GameResult::InProgress;
     PlayerInitFunc mPlayerInitFunc;
     bool mIsGameActive;
+    GameContext gameContext;
 };
