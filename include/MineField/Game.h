@@ -43,6 +43,8 @@ public:
     void markGameAsOver();
     bool isGameActive() const;
     GameContext& getGameContext();
+
+private:
     Board mBoard;
     int mMineCount;
     std::vector<std::unique_ptr<Player>> mPlayers;
