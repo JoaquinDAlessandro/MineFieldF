@@ -6,12 +6,12 @@
 
 namespace board::tests
 {
-TEST(Board, should_return_true_if_board_is_set_correctly)
+TEST(Board, should_return_board_with_expected_row_and_columns)
 {
     Game game;
     unsigned int rows = 10;
     unsigned int columns = 15;
-    game.setBoardSize(10, 15);
+    game.setBoardSize(rows, columns);
     EXPECT_EQ(game.getBoard().getRows(), rows);
     EXPECT_EQ(game.getBoard().getColumns(), columns);
 }
