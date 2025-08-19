@@ -5,7 +5,7 @@
 
 namespace game::tests
 {
-TEST(Game, should_return_1_if_player_is_added)
+TEST(Game, player_count_should_be_1_after_adding)
 {
     Game game;
     std::unique_ptr<Player> player = std::make_unique<Player>();
@@ -14,7 +14,7 @@ TEST(Game, should_return_1_if_player_is_added)
     EXPECT_EQ(size, 1);
 }
 
-TEST(Game, should_return_false_if_game_is_mark_as_over)
+TEST(Game, isGameActive_should_return_false_if_game_is_marked_as_over)
 {
     Game game;
     game.markGameAsOver();
