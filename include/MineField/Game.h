@@ -20,7 +20,7 @@ enum class GameResult
 class Game
 {
 public:
-    using PlayerInitFunc = std::function<void(Game&)>;
+    using PlayerInitFunc = std::function<void(GameContext&)>;
     Game();
     const std::vector<std::unique_ptr<Player>>& getPlayers() const ;
     Player& getPlayerAt(int i);

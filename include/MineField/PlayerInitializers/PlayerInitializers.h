@@ -3,7 +3,7 @@
 
 struct PlayerInitializers
 {
-    static void classicMode(Game& game);
-    static void soloMode(Game& game);
-    static void cpuVScpu(Game& game);
+    static void classicMode(GameContext& game);
+    static void soloMode(GameContext& game);
+    static void cpuVScpu(GameContext& game);
 };
