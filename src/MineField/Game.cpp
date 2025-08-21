@@ -73,7 +73,7 @@ void Game::runPlayerInitialization()
 {
     if (mPlayerInitFunc)
     {
-        mPlayerInitFunc(*this);
+        mPlayerInitFunc(gameContext);
     }
 }
 

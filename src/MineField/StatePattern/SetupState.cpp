@@ -31,7 +31,7 @@ void SetupState::update(Game& game)
         std::cin >>mines;
     }while(mines < 3 || mines >8);
 
-    game.setBoardSize(rows, columns); //instead of this, with refactor --> setBoardSize(rows, columns, context)
+    setBoardSize(rows, columns, context); 
     game.setMineCount(mines);
     int mode = 0;
     do
@@ -42,28 +42,30 @@ void SetupState::update(Game& game)
     switch(mode)
     {
         case 1:
-            game.setPlayerInitializer(&PlayerInitializers::classicMode); //instead of this, with refactor --> setPlayerInitFunc(&PlayerInitializers::classicMode, context)
+            setPlayerInitializer(PlayerInitializers::classicMode, context);
             break;
         case 2:
-            game.setPlayerInitializer(&PlayerInitializers::soloMode); //same 
+            setPlayerInitializer(PlayerInitializers::soloMode, context);
             break;
         case 3:
-            game.setPlayerInitializer(&PlayerInitializers::cpuVScpu);
+            setPlayerInitializer(PlayerInitializers::cpuVScpu, context);
             break;
     }
-    game.runPlayerInitialization(); // to change this I need to refactor PlayerInitializers.
-
+    context.runPlayerInitialization();
     std::cout <<"LET'S START PLAYING!!!"<<std::endl;
 
     game.changeState(std::make_unique<PlacingMinesState>());
 }
 
-void SetupState::setBoardSize(int rows, int columns, GameContext& context)
+void setBoardSize(int rows, int columns, GameContext& context)
 {
-   context.board = Board(rows, columns);
+    context.board.get() = Board(rows, columns);
+    
+
 
 }
-void SetupState::setPlayerInitializer(PlayerInitFunc& playerInitFunc, GameContext& context)
+using PlayerInitFunc = std::function<void(GameContext&)>;
+void setPlayerInitializer(PlayerInitFunc playerInitFunc, GameContext& context)
 {
     context.playerInitFunc = playerInitFunc;
 }
